@@ -1,0 +1,28 @@
+﻿//Variables impotantes para cada decicion
+int opcion; //Controlara el programa
+
+//se usan cuando el usuario selecciona evaluar contenido.
+int tipoContenido;
+int duracion;
+int clasificacion;
+int hora;
+int nivelProduccion;
+
+//Variables para resultados del análisis
+string impacto;
+string decision;
+
+//Variables de estadisticas Estas se quedan guardadas durante todo el programa
+int totalEvaluados = 0;
+int publicados = 0;
+int rechazados = 0;
+int enRevision = 0;
+
+//Tambien para contar impactos:
+int impactoBajo = 0;
+int impactoMedio = 0;
+int impactoAlto = 0;
+
+//Variables para los calculos
+double porcentajeAprobacion;
+

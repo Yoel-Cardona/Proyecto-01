@@ -1,0 +1,153 @@
+//Tube que colocar class para cada opcion.
+//Al inicio pense en crear una clase por cada tipo de contenido
+//pero luego note que no era necesario y que todo se podia manejar en una sola clase
+class Program
+{
+    //Se agrega el metodo Main porque es el punto de inicio del programa
+    static void Main()
+    {
+        //Variables importantes para controlar el programa
+        int opcion;
+
+        //Variables que se usaran al momento de evaluar contenido
+        int tipoContenido;
+        int duracion;
+        int clasificacion;
+        int hora;
+        int nivelProduccion;
+
+        //Variables para guardar resultados
+        string impacto;
+        string decision;
+
+        //Variables para estadísticas (se mantienen durante toda la ejecución)
+        int totalEvaluados = 0;
+        int publicados = 0;
+        int rechazados = 0;
+        int enRevision = 0;
+
+        //Se agregaron estas variables despues para contar el impacto
+        int impactoAlto = 0;
+        int impactoMedio = 0;
+        int impactoBajo = 0;
+
+        //Se utiliza un ciclo do-while para mantener activo el menú
+        do
+        {
+            //Las demas opciones del menu se agregaran despues, por ahora solo se muestra el menu principal
+            // y es por eso que solo funciona la opcion 1 y la 5 que es salir
+            Console.WriteLine("1. Evaluar contenido");
+            Console.WriteLine("2. Mostrar reglas");
+            Console.WriteLine("3. Mostrar estadísticas");
+            Console.WriteLine("4. Reiniciar estadísticas");
+            Console.WriteLine("5. Salir");
+
+            Console.Write("Opción: ");
+            opcion = Convert.ToInt32(Console.ReadLine());
+
+            //Uso de switch para controlar las opciones del menú
+            switch (opcion)
+            {
+                case 1:
+                    //Se empiezan a pedir los datos al usuario
+
+                    Console.WriteLine("\nTipo de contenido:");
+                    Console.WriteLine("1. Película");
+                    Console.WriteLine("2. Serie");
+                    Console.WriteLine("3. Documental");
+                    Console.WriteLine("4. Evento en vivo");
+                    tipoContenido = Convert.ToInt32(Console.ReadLine());
+
+                    Console.Write("Duración: ");
+                    duracion = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("Clasificación:");
+                    Console.WriteLine("1. Todo público");
+                    Console.WriteLine("2. +13");
+                    Console.WriteLine("3. +18");
+                    clasificacion = Convert.ToInt32(Console.ReadLine());
+
+                    Console.Write("Hora (0-23): ");
+                    hora = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("Producción:");
+                    Console.WriteLine("1. Baja");
+                    Console.WriteLine("2. Media");
+                    Console.WriteLine("3. Alta");
+                    nivelProduccion = Convert.ToInt32(Console.ReadLine());
+
+                    //Se crea una variable para validar si el contenido cumple las reglas
+                    bool valido = true;
+
+                    //Esta variable se usara para guardar el motivo en caso de error
+                    string motivo = "";
+
+                    //Aqui aun faltaria implementar las validaciones y decisiones
+
+                    break;
+                case 2:
+                    //En esta parte se decidio mostrar las reglas del sistema
+                    //para que el usuario entienda como se toman las decisiones
+                    //utilizamos for porque me senti mas comodo para mostrar las reglas
+                    for (int i = 1; i <= 1; i++)
+                    {
+                        Console.WriteLine("Clasificación y horario:");
+                        Console.WriteLine("Todo público: cualquier hora");
+                        Console.WriteLine("+13: de 6 a 22 horas");
+                        Console.WriteLine("+18: de 22 a 5 horas");
+
+                        Console.WriteLine("Duración por tipo:");
+                        Console.WriteLine("Película: 60 a 180 minutos");
+                        Console.WriteLine("Serie: 20 a 90 minutos");
+                        Console.WriteLine("Documental: 30 a 120 minutos");
+                        Console.WriteLine("Evento en vivo: 30 a 240 minutos");
+
+                        Console.WriteLine("Reglas de producción:");
+                        Console.WriteLine("Producción baja: solo Todo público o +13");
+                        Console.WriteLine("Producción media y alta: cualquier clasificación");
+                    }
+
+                    break;
+
+                case 3:
+                    //En esta parte se agrego la opcion para mostrar las estadísticas del sistema
+                    //Esto permite ver cuantos contenidos se han evaluado y sus resultados
+                    //Es en esta parte donde estran el guardado de las variables definidas al inicio para contar los resultados
+                    //Se muestra el total de evaluados, publicados, rechazados y en revision
+                    Console.WriteLine("Total evaluados: " + totalEvaluados);
+                    Console.WriteLine("Publicados: " + publicados);
+                    Console.WriteLine("Rechazados: " + rechazados);
+                    Console.WriteLine("En revisión: " + enRevision);
+
+                    //Aqui se intento determinar cual es el impacto que mas se repite
+                    string impactoPred = "Bajo";
+
+                    if (impactoAlto > impactoMedio && impactoAlto > impactoBajo)
+                    {
+                        impactoPred = "Alto";
+                    }
+                    else if (impactoMedio > impactoBajo)
+                    {
+                        impactoPred = "Medio";
+                    }
+
+                    Console.WriteLine("Impacto predominante: " + impactoPred);
+
+                    //Se agrega el porcentaje de aprobacion
+                    //Al inicio tuve duda con esto porque podia dar error si totalEvaluados era 0
+                    //pero se agrego una validacion para evitar ese error y mostrar un mensaje en caso de que no haya datos suficientes
+                    if (totalEvaluados > 0)
+                    {
+                        double porcentaje = (publicados * 100.0) / totalEvaluados;
+                        Console.WriteLine("Porcentaje de aprobación: " + porcentaje + "%");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No hay datos suficientes para calcular el porcentaje");
+                    }
+                    break;
+            }
+            //al agragar while se asegura que el programa se mantenga activo hasta que el usuario decida salir
+        } while (opcion != 5);
+    }
+}

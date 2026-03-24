@@ -1,0 +1,92 @@
+﻿//Tube que colocar class para cada opcion.
+//Al inicio pense en crear una clase por cada tipo de contenido
+//pero luego note que no era necesario y que todo se podia manejar en una sola clase
+class Program
+{
+    //Se agrega el metodo Main porque es el punto de inicio del programa
+    static void Main()
+    {
+        //Variables importantes para controlar el programa
+        int opcion;
+
+        //Variables que se usaran al momento de evaluar contenido
+        int tipoContenido;
+        int duracion;
+        int clasificacion;
+        int hora;
+        int nivelProduccion;
+
+        //Variables para guardar resultados
+        string impacto;
+        string decision;
+
+        //Variables para estadísticas (se mantienen durante toda la ejecución)
+        int totalEvaluados = 0;
+        int publicados = 0;
+        int rechazados = 0;
+        int enRevision = 0;
+
+        //Se agregaron estas variables despues para contar el impacto
+        int impactoAlto = 0;
+        int impactoMedio = 0;
+        int impactoBajo = 0;
+
+        //Se utiliza un ciclo do-while para mantener activo el menú
+        do
+        {
+            //Las demas opciones del menu se agregaran despues, por ahora solo se muestra el menu principal
+            // y es por eso que solo funciona la opcion 1 y la 5 que es salir
+            Console.WriteLine("1. Evaluar contenido");
+            Console.WriteLine("2. Mostrar reglas");
+            Console.WriteLine("3. Mostrar estadísticas");
+            Console.WriteLine("4. Reiniciar estadísticas");
+            Console.WriteLine("5. Salir");
+
+            Console.Write("Opción: ");
+            opcion = Convert.ToInt32(Console.ReadLine());
+
+            //Uso de switch para controlar las opciones del menú
+            switch (opcion)
+            {
+                case 1:
+                    //Se empiezan a pedir los datos al usuario
+
+                    Console.WriteLine("\nTipo de contenido:");
+                    Console.WriteLine("1. Película");
+                    Console.WriteLine("2. Serie");
+                    Console.WriteLine("3. Documental");
+                    Console.WriteLine("4. Evento en vivo");
+                    tipoContenido = Convert.ToInt32(Console.ReadLine());
+
+                    Console.Write("Duración: ");
+                    duracion = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("Clasificación:");
+                    Console.WriteLine("1. Todo público");
+                    Console.WriteLine("2. +13");
+                    Console.WriteLine("3. +18");
+                    clasificacion = Convert.ToInt32(Console.ReadLine());
+
+                    Console.Write("Hora (0-23): ");
+                    hora = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("Producción:");
+                    Console.WriteLine("1. Baja");
+                    Console.WriteLine("2. Media");
+                    Console.WriteLine("3. Alta");
+                    nivelProduccion = Convert.ToInt32(Console.ReadLine());
+
+                    //Se crea una variable para validar si el contenido cumple las reglas
+                    bool valido = true;
+
+                    //Esta variable se usara para guardar el motivo en caso de error
+                    string motivo = "";
+
+                    //Aqui aun faltaria implementar las validaciones y decisiones
+
+                    break;
+            }
+            //al agragar while se asegura que el programa se mantenga activo hasta que el usuario decida salir
+        } while (opcion != 5);
+    }
+}
